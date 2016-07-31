@@ -27,6 +27,11 @@ group :development, :test do
   gem 'rails-controller-testing'
 end
 
+#needed for travisCI
+group :test do
+  gem 'rake'
+end
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
