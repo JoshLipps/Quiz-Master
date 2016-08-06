@@ -1,7 +1,7 @@
-import HomeModule from './home/home.js';
+import QuestionsModule from './questions/questions.js';
 import NavbarModule from './navbar/navbar.js';
 
 export default angular.module('app.components', [
-  HomeModule,
+  QuestionsModule,
   NavbarModule
 ]).name;

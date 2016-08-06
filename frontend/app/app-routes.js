@@ -8,6 +8,6 @@ export default function appRoutes($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      template: '<home></home>'
+      template: '<questions></questions>'
     });
 }

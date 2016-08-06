@@ -1,4 +1,4 @@
-/* global module, __dirname, require */
+/* global module, __dirname, require, process */
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -30,6 +30,21 @@ module.exports = {
     template: path.resolve(__dirname, 'app', 'public', 'index.html'),
     hash: true
   })],
-  devServer: {},
+  devServer: {
+    historyApiFallback: true,
+    // contentBase: '',
+    port: 4000,
+    publicPath: '/',
+    stats: {
+      exclude: ['node_modules'],
+      colors: true
+    },
+    proxy: {
+      '/api*': {
+        target: process.env.PROXY_TARGET || 'http://localhost:3000/',
+        secure: false
+      }
+    }
+  },
   devtool: 'eval'
 };

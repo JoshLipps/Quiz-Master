@@ -8,7 +8,7 @@
     "build": "webpack --progress --colors -p",
     "watch": "webpack --progress --colors --watch -p",
     "dev": "webpack-dev-server --progress --colors --inline --hot",
-    "start": "PUBLIC_PATH='./build' www",
+    "start": "webpack-dev-server --progress --colors --inline --hot",
     "test": "karma",
     "clean": "rm -rf node_modules"
   },

@@ -1,0 +1,36 @@
+
+<div layout="column" layout-fill>
+  <navbar></navbar>
+  <md-content>
+
+    <md-list>
+       <md-list-item class="md-2-line md-offset" ng-repeat="question in $ctrl.questions">
+         <div class="md-list-item-text" >
+           <h3>{{question.content}}</h3>
+           <p>{{question.answer}}</p>
+         </div>
+       </md-list-item>
+
+    </md-list>
+
+    <div class="" ng-if="$ctrl.newQuestion">
+      <md-input-container>
+        <label>Question</label>
+        <input type="text" ng-model="$ctrl.newQuestion.content">
+      </md-input-container>
+      <md-input-container>
+        <label>Answer</label>
+        <input type="text" ng-model="$ctrl.newQuestion.answer">
+      </md-input-container>
+
+      <md-button class="md-raised" ng-click="$ctrl.saveQuestion()">
+        Save
+      </md-button>
+    </div>
+
+    <md-button class="md-raised" ng-click="$ctrl.addQuestion()">
+      Add Question
+    </md-button>
+
+  </md-content>
+</div>
