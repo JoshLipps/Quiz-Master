@@ -37,7 +37,7 @@ function questionsController(QuestionsService, $log, _){
 
   function refreshList(){
     QuestionsService.getList().then(
-      (response) => (vm.questions = response.data),
+      (response) => (vm.questions = response.data || []),
       //TODO better error handling
       (error) => ($log.error('Error getting questions list', error))
     );
