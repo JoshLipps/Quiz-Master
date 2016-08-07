@@ -4,6 +4,6 @@ rvm:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database my_database_development;' -U postgres
+  - psql -c 'create database my_database_test;' -U postgres
 notifications:
   email: false
