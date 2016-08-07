@@ -6,7 +6,7 @@
     <md-list>
       <md-subheader class="md-no-sticky">Questions Editor</md-subheader>
 
-      <md-list-item  class="question-row md-2-line" ng-repeat="question in $ctrl.questions" >
+      <md-list-item  class="question-row md-2-line" ng-repeat="question in $ctrl.questions track by $index" >
 
       <div class="md-list-item-text" ng-hide="$ctrl.editMap[question.id]" ng-click="$ctrl.edit(question)" >
        <h3>{{question.content}}</h3>
