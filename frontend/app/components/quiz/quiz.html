@@ -1,0 +1,57 @@
+<md-content flex layout-padding>
+    <!-- <md-subheader class="md-no-sticky">Take a quiz.</md-subheader> -->
+
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline" >Questions answered:</span>
+
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p>Correctly: {{$ctrl.right||0}} Incorrectly: {{$ctrl.wrong||0}}</p>
+      </md-card-content>
+    </md-card>
+
+    <span  ng-switch="$ctrl.state">
+      <div md-whiteframe="2" class="feedback correct" ng-switch-when="right">
+        Right Answer!!!
+      </div>
+      <div md-whiteframe="2" class="feedback wrong" ng-switch-when="wrong">
+        Wrong Answer.
+      </div>
+      <div md-whiteframe="2" class="feedback done" ng-switch-when="done">
+        Well done you answered all the questions correctly!!
+      </div>
+      <div md-whiteframe="2" class="feedback" ng-switch-default>
+        Please answer the following question.
+      </div>
+    </span>
+
+    <form class="quiz-form" ng-hide="$ctrl.state === 'done'" name="$ctrl.quizForm">
+      <h3>{{$ctrl.currentQuestion.content}}</h3>
+      <md-input-container>
+        <label for="answer" ng-hide="$ctrl.state==='right'" >Enter your answer</label>
+        <input name="answer" type="text" ng-disabled="$ctrl.state === 'right'" required ng-model="$ctrl.answer" />
+        <!-- <div ng-messages="$ctrl.quizForm.answer.$error" role="alert">
+          <div ng-message="required">
+            The answer is required.
+          </div>
+        </div> -->
+      </md-input-container>
+
+      <div class="button-group">
+        <md-button class="md-raised md-primary" ng-disabled="$ctrl.state==='right'" ng-click="$ctrl.answerQuestion($ctrl.currentQuestion.id, $ctrl.answer)" aria-label="answer">
+          Answer
+        </md-button>
+      </div>
+    </form>
+
+    <div class="next-container">
+      <md-button class="md-raised md-primary" ng-show="$ctrl.state === 'right'" ng-click="$ctrl.nextQuestion()" aria-label="next">
+        Next
+      </md-button>
+    </div>
+
+
+</md-content>

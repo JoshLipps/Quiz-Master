@@ -36,7 +36,7 @@ class QuizController < ApplicationController
     end
 
     def replace_numbers(str)
-      str.to_s.gsub(/[\d,]*/) {|num| in_words(num.delete(',').to_i).strip}
+      str.to_s.downcase.gsub(/[\d,]*/) {|num| in_words(num.delete(',').to_i).strip}
     end
 
     def in_words(int)

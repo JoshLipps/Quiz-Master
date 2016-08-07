@@ -1,0 +1,27 @@
+/*.page {
+  margin: 16px;
+}*/
+.quiz-form {
+  padding: 0 32px;
+}
+
+.feedback {
+  padding: 16px;
+  margin: 8px
+}
+
+.correct {
+  color: green;
+  background-color: lightgreen;
+}
+
+.wrong {
+  color: red;
+  background-color: pink;
+}
+
+.next-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

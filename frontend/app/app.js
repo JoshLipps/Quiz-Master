@@ -7,8 +7,9 @@ import _ from 'lodash';
 
 
 import componentsModule from './components/components.js';
+import serviceModule from './services/services-module.js';
 import appRoutes from './app-routes.js';
 
-angular.module('app', [router, ngSanitize, ngMaterial, componentsModule])
+angular.module('app', [router, ngSanitize, ngMaterial, componentsModule, serviceModule])
   .config(appRoutes)
   .value('_', _); //add lodash into angular injection lib

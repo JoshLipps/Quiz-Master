@@ -1,17 +1,4 @@
-import questionsTemplate from './questions.html';
-import './questions.css';
-
-import QuestionsService from './questions.service.js';
-
-export default angular.module('app.components.questions', [])
-  .component('questions', {
-    templateUrl: questionsTemplate,
-    controller: questionsController
-  })
-  .factory('QuestionsService', QuestionsService)
-  .name;
-
-function questionsController(QuestionsService, $log, _){
+export default function questionsController(QuestionsService, $log, _){
   'ngInject';
 
   let vm = this;
