@@ -77,5 +77,10 @@ RSpec.describe QuizController, type: :controller do
       parsed_body = JSON.parse(response.body)
       expect(parsed_body).to eq({"correct" => true})
     end
+
+    it "handles floats" do
+      skip("nope doesn't do this yet")
+    end
+
   end
 end
