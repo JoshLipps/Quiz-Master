@@ -1,0 +1,41 @@
+<md-content flex layout-padding>
+    <md-subheader class="md-no-sticky">Quiz Mode</md-subheader>
+
+    <div ng-switch="$ctrl.state">
+      <div class="correct" ng-switch-when="right">
+        Right Answer!!!
+      </div>
+      <div class="wrong" ng-switch-when="wrong">
+        Wrong Answer.
+      </div>
+      <div class="done" ng-switch-when="done">
+        Well done you answerd all the questions correctly!!
+      </div>
+    </div>
+
+    <form ng-if="$ctrl.state !== 'done'" flex-offset="5" name="$ctrl.quizForm">
+      <h3>{{$ctrl.currentQuestion.content}}</h3>
+      <md-input-container>
+        <label for="answer" ng-hide="$ctrl.state==='right'" >Enter your answer</label>
+        <input name="answer" type="text" ng-disabled="$ctrl.state === 'right'" required ng-model="$ctrl.answer">
+        <div ng-messages="$ctrl.quizForm.answer.$error" role="alert">
+          <div ng-message="required">
+            The answer is required.
+          </div>
+        </div>
+      </md-input-container>
+
+      <div class="button-group">
+        <md-button class="md-raised md-primary" ng-disabled="$ctrl.quizForm.$invalid || $ctrl.state==='right'" ng-click="$ctrl.answerQuestion($ctrl.currentQuestion.id, $ctrl.answer)" aria-label="answer">
+          Answer
+        </md-button>
+      </div>
+
+
+    </form>
+
+    <md-button class="md-raised md-primary" ng-show="$ctrl.state === 'right'" ng-click="$ctrl.nextQuestion()" aria-label="next">
+      Next
+    </md-button>
+
+</md-content>

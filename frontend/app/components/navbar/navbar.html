@@ -1,9 +1,10 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <span>Quiz System</span>
-    <!-- <span flex></span>
-    <md-button>
-      Menu
-    </md-button> -->
+    <span>Quiz Master</span>
   </div>
 </md-toolbar>
+
+<md-nav-bar md-selected-nav-item="vm.$state.current.name" nav-bar-aria-label="navigation links">
+  <md-nav-item md-nav-sref="quiz" name="quiz">Take Quiz</md-nav-item>
+  <md-nav-item md-nav-sref="questions" name="questions">Edit Questions</md-nav-item>
+</md-nav-bar>

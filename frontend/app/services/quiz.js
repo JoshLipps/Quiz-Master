@@ -1,7 +1,7 @@
 export default function QuizsService($http){
   'ngInject';
 
-  let quizUrlBase = '/api/quizs';
+  let quizUrlBase = '/api/quiz';
 
   return {
     getList: getList,
