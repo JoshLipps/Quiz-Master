@@ -8,32 +8,44 @@
 
       <md-list-item  class="question-row md-2-line" ng-repeat="question in $ctrl.questions" >
 
-      <div class="md-list-item-text" ng-hide="$ctrl.editMap[question.id]" ng-click="$ctrl.edit(question.id)" >
+      <div class="md-list-item-text" ng-hide="$ctrl.editMap[question.id]" ng-click="$ctrl.edit(question)" >
        <h3>{{question.content}}</h3>
        <p>{{question.answer}}</p>
       </div>
 
-      <div class="md-list-item-text" ng-show="$ctrl.editMap[question.id]">
+      <form name="questionForm" class="md-list-item-text" ng-show="$ctrl.editMap[question.id]">
 
         <md-input-container>
-          <label>Question</label>
-          <input type="text" ng-model="question.content">
+          <label for="content" >Question</label>
+          <input name="content" type="text" required="true" ng-model="$ctrl.editMap[question.id].content">
+          <div ng-messages="questionForm.content.$error" role="alert">
+            <div ng-message="required">
+              The question is required.
+            </div>
+          </div>
         </md-input-container>
 
         <md-input-container>
-          <label>Answer</label>
-          <input type="text" ng-model="question.answer">
+          <label for="answer">Answer</label>
+          <input name="answer" type="text" required="true" ng-model="$ctrl.editMap[question.id].answer">
+          <div ng-messages="questionForm.answer.$error" role="alert">
+            <div ng-message="required">
+              The answer is required.
+            </div>
+          </div>
         </md-input-container>
 
-        <md-button class="md-raised" ng-click="$ctrl.cancelEdit(question.id)" aria-label="cancel">
-          Cancel
-        </md-button>
+        <div class="button-group">
+          <md-button class="md-raised md-primary" ng-disabled="!questionForm.$valid" ng-click="$ctrl.updateQuestion($ctrl.editMap[question.id])" aria-label="update">
+            Update
+          </md-button>
+          <md-button class="md-raised" ng-click="$ctrl.cancelEdit(question.id)" aria-label="cancel">
+            Cancel
+          </md-button>
+        </div>
 
-        <md-button class="md-raised md-primary" ng-click="$ctrl.updateQuestion(question)" aria-label="update">
-          Update
-        </md-button>
 
-      </div>
+      </form>
 
       <md-button class="md-icon-button" ng-click="$ctrl.removeQuestion(question.id)" aria-label="delete">
         <md-icon class="material-icons">delete</md-icon>
@@ -43,25 +55,43 @@
 
     </md-list>
 
-    <div class="question-row" ng-if="$ctrl.newQuestion">
+    <form name="newQuestionForm" class="question-row" ng-if="$ctrl.newQuestion">
       <md-input-container>
-        <label>Question</label>
-        <input type="text" ng-model="$ctrl.newQuestion.content">
+        <label for="content">Question</label>
+        <input name="content" type="text" required ng-model="$ctrl.newQuestion.content">
+
+        <div ng-messages="newQuestionForm.content.$error" role="alert">
+          <div ng-message="required">
+            The question is required.
+          </div>
+        </div>
+
       </md-input-container>
 
       <md-input-container>
-        <label>Answer</label>
-        <input type="text" ng-model="$ctrl.newQuestion.answer">
+        <label for="answer" >Answer</label>
+        <input name="answer" type="text" required ng-model="$ctrl.newQuestion.answer">
+
+        <div ng-messages="newQuestionForm.answer.$error" role="alert">
+          <div ng-message="required">
+            The answer is required.
+          </div>
+        </div>
+
       </md-input-container>
 
-      <md-button class="md-raised" ng-click="$ctrl.cancelQuestion()" aria-label="cancel">
-        Cancel
-      </md-button>
+      <div class="button-group">
+        <md-button class="md-raised md-primary" ng-disabled="!newQuestionForm.$valid" ng-click="$ctrl.saveQuestion()" aria-label="save">
+          Save
+        </md-button>
+        <md-button class="md-raised" ng-click="$ctrl.cancelQuestion()" aria-label="cancel">
+          Cancel
+        </md-button>
+      </div>
 
-      <md-button class="md-raised md-primary" ng-click="$ctrl.saveQuestion()" aria-label="save">
-        Save
-      </md-button>
-    </div>
+
+
+    </form>
 
     <md-button class="md-raised md-primary" ng-disabled="$ctrl.newQuestion" ng-click="$ctrl.addQuestion()" aria-label="add question">
       Add Question

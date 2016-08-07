@@ -50,7 +50,7 @@ function questionsController(QuestionsService, $log, _){
         vm.questions = _.reject(vm.questions, {id: id});
       },
       //TODO better error handling
-      (error) => ($log.error('Error getting questions list', error))
+      (error) => ($log.error('Error removing question', error))
     );
   }
 
@@ -65,7 +65,7 @@ function questionsController(QuestionsService, $log, _){
         cancelQuestion();
       },
       //TODO better error handling
-      (error) => ($log.error('Error getting saving new question', error))
+      (error) => ($log.error('Error saving new question', error))
     );
   }
 
@@ -78,12 +78,12 @@ function questionsController(QuestionsService, $log, _){
         cancelEdit(question.id);
       },
       //TODO better error handling
-      (error) => ($log.error('Error getting updating question ' + question.id, error))
+      (error) => ($log.error('Error updating question ' + question.id, error))
     );
   }
 
-  function edit(id){
-    vm.editMap[id] = true;
+  function edit(question){
+    vm.editMap[question.id] = angular.copy(question);
   }
 
   function cancelEdit(id){
