@@ -4,31 +4,66 @@
   <md-content>
 
     <md-list>
-       <md-list-item class="md-2-line md-offset" ng-repeat="question in $ctrl.questions">
-         <div class="md-list-item-text" >
-           <h3>{{question.content}}</h3>
-           <p>{{question.answer}}</p>
-         </div>
+      <md-subheader class="md-no-sticky">Questions Editor</md-subheader>
+
+      <md-list-item  class="question-row md-2-line" ng-repeat="question in $ctrl.questions" >
+
+      <div class="md-list-item-text" ng-hide="$ctrl.editMap[question.id]" ng-click="$ctrl.edit(question.id)" >
+       <h3>{{question.content}}</h3>
+       <p>{{question.answer}}</p>
+      </div>
+
+      <div class="md-list-item-text" ng-show="$ctrl.editMap[question.id]">
+
+        <md-input-container>
+          <label>Question</label>
+          <input type="text" ng-model="question.content">
+        </md-input-container>
+
+        <md-input-container>
+          <label>Answer</label>
+          <input type="text" ng-model="question.answer">
+        </md-input-container>
+
+        <md-button class="md-raised" ng-click="$ctrl.cancelEdit(question.id)" aria-label="cancel">
+          Cancel
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="$ctrl.updateQuestion(question)" aria-label="update">
+          Update
+        </md-button>
+
+      </div>
+
+      <md-button class="md-icon-button" ng-click="$ctrl.removeQuestion(question.id)" aria-label="delete">
+        <md-icon class="material-icons">delete</md-icon>
+      </md-button>
+
        </md-list-item>
 
     </md-list>
 
-    <div class="" ng-if="$ctrl.newQuestion">
+    <div class="question-row" ng-if="$ctrl.newQuestion">
       <md-input-container>
         <label>Question</label>
         <input type="text" ng-model="$ctrl.newQuestion.content">
       </md-input-container>
+
       <md-input-container>
         <label>Answer</label>
         <input type="text" ng-model="$ctrl.newQuestion.answer">
       </md-input-container>
 
-      <md-button class="md-raised" ng-click="$ctrl.saveQuestion()">
+      <md-button class="md-raised" ng-click="$ctrl.cancelQuestion()" aria-label="cancel">
+        Cancel
+      </md-button>
+
+      <md-button class="md-raised md-primary" ng-click="$ctrl.saveQuestion()" aria-label="save">
         Save
       </md-button>
     </div>
 
-    <md-button class="md-raised" ng-click="$ctrl.addQuestion()">
+    <md-button class="md-raised md-primary" ng-disabled="$ctrl.newQuestion" ng-click="$ctrl.addQuestion()" aria-label="add question">
       Add Question
     </md-button>
 

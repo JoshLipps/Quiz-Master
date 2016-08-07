@@ -1,0 +1,12 @@
+/*.question-hover:hover {
+  background-color: rgba(158,158,158,0.2);
+}*/
+.question-row {
+  padding-left: 8px;
+}
+.md-icon-button {
+  align-self: center;
+}
+.md-icon-button:hover{
+  background-color: rgba(158,158,158,0.4);
+}
