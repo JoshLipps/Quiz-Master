@@ -40,14 +40,17 @@ export default function quizController(QuizService, $log, _){
       function(response){
         if(response.data.correct){
           vm.state = 'right';
+
           vm.right++;
+          //
+          // vm.quizForm.$setValidity();
+          // vm.quizForm.$setPristine();
+          // vm.quizForm.$setUntouched();
+
         } else {
           vm.state = 'wrong';
           vm.wrong++;
         }
-        //clear required field
-        vm.quizForm.$setValidity();
-        $log.debug(vm.correct, response,vm.quizForm);
 
       },
       //TODO better error handling
@@ -61,6 +64,11 @@ export default function quizController(QuizService, $log, _){
     } else {
       vm.currentQuestion = questions.shift();
       vm.answer = null;
+
+      // vm.quizForm.$setValidity();
+      // vm.quizForm.$setPristine();
+      // vm.quizForm.$setUntouched();
+
       vm.state = null;
     }
   }
