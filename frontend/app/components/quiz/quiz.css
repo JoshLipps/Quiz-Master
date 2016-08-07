@@ -1,15 +1,27 @@
-/*.question-hover:hover {
-  background-color: rgba(158,158,158,0.2);
+/*.page {
+  margin: 16px;
 }*/
-.question-row {
-  padding-left: 8px;
+.quiz-form {
+  padding: 0 32px;
 }
-.button-group {
-  display: inline-block;
+
+.feedback {
+  padding: 16px;
+  margin: 8px
 }
-.md-icon-button {
-  align-self: center;
+
+.correct {
+  color: green;
+  background-color: lightgreen;
 }
-.md-icon-button:hover{
-  background-color: rgba(158,158,158,0.4);
+
+.wrong {
+  color: red;
+  background-color: pink;
+}
+
+.next-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

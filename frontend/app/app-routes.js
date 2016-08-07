@@ -9,7 +9,7 @@ export default function appRoutes($stateProvider, $urlRouterProvider, $locationP
   // Now set up the states
   $stateProvider
     .state('root', {
-      template: '<md-content><navbar></navbar><div ui-view></div></md-content>'
+      template: '<md-content><navbar></navbar><div md-whiteframe="1" class="page" ui-view></div></div>'
     });
 
   $stateProvider

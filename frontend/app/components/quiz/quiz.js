@@ -42,10 +42,6 @@ export default function quizController(QuizService, $log, _){
           vm.state = 'right';
 
           vm.right++;
-          //
-          // vm.quizForm.$setValidity();
-          // vm.quizForm.$setPristine();
-          // vm.quizForm.$setUntouched();
 
         } else {
           vm.state = 'wrong';
