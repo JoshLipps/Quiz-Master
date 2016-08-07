@@ -1,12 +1,27 @@
 #Quiz-Master [![Build Status](https://travis-ci.org/JoshLipps/Quiz-Master.svg?branch=master)](https://travis-ci.org/JoshLipps/Quiz-Master)
 Quiz Master
 
+### Application Design
+Ruby on Rails for the backend API all behind `/api` endpoints (/api/questions and /api/quiz). RSpec for Tests ans Postgres for DB.
+
+The frontend is Angular and Angular Material put togeather using webpack and babel(for es6 support). all of Ruby's asset pipleline/sprokets are disabled in favor or webpack at the moment but at a future date it should be integrated.
+
+### Infarstructure
+This Project is currently automatically deployed to Heroku on commits to master branch. Commits on PRs will be automatically tested using TravisCI.
+
+
+### Outstanding issues
+Please checkout [Issue Tracker](https://github.com/JoshLipps/Quiz-Master/issues)
+
+
 ### Folder Structure
 folders of note:
 
-  - `app` - main ruby code
+  - `app`      - main ruby/rails code
+    `config`   - routes and env config
   - `frontend` - contains a subproject that builds its own UI code
-  - `spec` - automated RSpec tests (exectued by ruby against PRs)
+  - `spec`     - automated RSpec tests (exectued by ruby against PRs)
+
 
 ### Specifications
 1. Manage questions
